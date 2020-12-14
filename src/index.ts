@@ -27,14 +27,20 @@ const jsonRPCResponseHandler = (error: any, reply: any) => {
 }
 
 jsonRPCClient.connect(websocketURL, function connected() {
-  console.log("Connected to ", websocketURL);
-  jsonRPCClient.send("printer.gcode.script", {"script": "STATUS"}, jsonRPCResponseHandler);
+  if (jsonRPCClient.isConnected()) {
+    console.log("Connected to ", websocketURL);
+    jsonRPCClient.send("printer.gcode.script", {"script": "STATUS"}, jsonRPCResponseHandler);
 
-  jsonRPCClient.expose("notify_gcode_response", function (data: []) {
-    data.forEach((e) => console.log("<", e))
-  })
+    jsonRPCClient.expose("notify_gcode_response", function (data: []) {
+      data.forEach((e) => console.log("<", e))
+    })
 
-  readlineInterface.on('line', function (line: string) {
-    jsonRPCClient.send("printer.gcode.script", {"script": line}, jsonRPCResponseHandler);
-  })
-})
+    readlineInterface.on('line', function (line: string) {
+      jsonRPCClient.send("printer.gcode.script", {"script": line}, jsonRPCResponseHandler);
+    });
+  }
+  else {
+    console.error("Not connected, check connection URL and/or CORS configuration for Moonraker");
+    process.exit(1);
+  }
+});
