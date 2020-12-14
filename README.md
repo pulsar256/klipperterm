@@ -1,6 +1,6 @@
 # klipperterm
 
-Interactive G-Code Terminal Proof Of Concept for [Klipper](https://github.com/KevinOConnor/klipper) + [Moonraker](https://github.com/Arksine/moonraker).
+Proof Of Concept Interactive G-Code Terminal for [Klipper](https://github.com/KevinOConnor/klipper) + [Moonraker](https://github.com/Arksine/moonraker).
 
 ## Build
 
@@ -10,7 +10,7 @@ npm run-script build
 npm -g install
 ```
 
-## Use
+## Usage
 
 ```shell
 npx klipperterm ws://x1/websocket
