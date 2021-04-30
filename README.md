@@ -2,6 +2,8 @@
 
 Proof Of Concept Interactive G-Code Terminal for [Klipper](https://github.com/KevinOConnor/klipper) + [Moonraker](https://github.com/Arksine/moonraker).
 
+![Screenshot](./doc/screenshot.png "Screenshot")
+
 ## Build
 
 ```shell

@@ -87,7 +87,7 @@ function printLine(isError: boolean, e: String, prompt: String) {
 jsonRPCClient.connect(websocketURL, function connected() {
   if (jsonRPCClient.isConnected()) {
     printLine(false, `Connected to ${websocketURL}`,"<");
-    printLine(false, `/quit and /exits ltes the application`,"<");
+    printLine(false, `/quit and /exits terminates the application`,"<");
     jsonRPCClient.send("printer.gcode.script", {"script": "STATUS"}, jsonRPCResponseHandler);
 
     jsonRPCClient.expose("notify_gcode_response", function (data: []) {
